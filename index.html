@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mugs</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <!-- logo -->
+    <figure class="logo">
+      <img src="img/logo.svg" alt="Mugs">
+    </figure>
+    <!-- menu -->
+    <ul class="menu">
+      <li><a href="#canecas" class="button-header">Nossas canecas <img src="img/seta.svg"></a></li>
+      <li><a href="#orcamento">Orçamento</a></li>
+      <li><a href="#carrinho">Carrinho <span class="carrinho"><img src="img/carrinho.svg"></span></a></li>
+    </ul>
+  </header>
+
+  <!-- Structure -->
+  <div class="structure">
+    <!-- intro -->
+    <section class="grid-column intro">
+      <h1 class="title">Canecas Clássicas</h1>
+      <div class="grid-container">
+        <p class="paragraph">Encontre aqui a caneca que você procurava. Temos diversos modelos de canecas, como canecas
+          especiais, criativas e divertidas.</p>
+
+        <p class="paragraph">Veja abaixo nossos modelos</p>
+
+        <div class="flex-container">
+          <a href="#canecas"><button class="button-intro">Nossas canecas <img src="img/seta.svg"></button></a>
+          <figure class="logo-icon">
+            <img src="img/logo-rosa.svg" alt="Mugs">
+          </figure>
+        </div>
+      </div>
+
+      <div class="attributes">
+        <article class="attribute">
+          <span class="percentage">95%</span>
+          <span class="attribute-title">Resistentes</span>
+        </article>
+        <article class="attribute">
+          <span class="percentage">100%</span>
+          <span class="attribute-title">Frete grátis</span>
+        </article>
+        <article class="attribute">
+          <span class="percentage">60%</span>
+          <span class="attribute-title">De desconto</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Mugs -->
+    <section class="grid-column mugs" id="canecas">
+      <h1 class="title">Escolha a sua agora</h1>
+      <div class="grid-container">
+        <ul class="mug-control">
+          <li><img src="img/mugs-img/mug-1-control.png"></li>
+          <li><img src="img/mugs-img/mug-2-control.png"></li>
+          <li class="active"><img src="img/mugs-img/mug-3-control.png"></li>
+          <li><img src="img/mugs-img/mug-4-control.png"></li>
+        </ul>
+
+        <div class="mug-content">
+          <article class="mug-container">
+            <h2 class="subtitle">Caneca preta de porcelana</h2>
+            <p class="paragraph">Uma mug preta tende a ser associada à elegância e força, e é ligada a pessoas
+              ambiciosas
+              e decididas, de personalidade forte.</p>
+
+            <figure class="mug-image">
+              <img src="img/mugs-img/mug-3.png" alt="Foto de uma caneca preta de porcelana">
+            </figure>
+
+            <div class="stock">
+              <span class="stock-title">Estoque limitado</span>
+              <span class="remaining">13 restantes</span>
+            </div>
+
+            <div class="buy">
+              <p>Por:</p>
+              <span class="price"><sup class="cipher">R$</sup>38,00</span>
+              <button class="sell-button">Adicionar ao carrinho</button>
+              <span class="encrypted-information"><img src="img/cadeado.svg">Informações seguras e criptografadas</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="grid-column quote">
+      <blockquote>
+        <p>“Praia, nascer do sol, caneca de café, metade do lado, som do mar, silencio do mundo.”</p>
+        <cite>Caique Roberto de Souza</cite>
+      </blockquote>
+    </section>
+
+    <!-- Budget -->
+    <section class="grid-column budget" id="orcamento">
+      <h1 class="title">Sua mug personalizada</h1>
+      <div class="grid-container">
+        <p class="paragraph">Já pensou receber um grande grupo de amigos para um café da manhã ou um chocolate quente e
+          servi-los em canecas charmosas e com desenhos e formas diferentes do convencional? Todos vão ficar surpresos
+          querendo ver o que tem na caneca de cada um. Além disso é uma ótima maneira de deixar a cozinha sempre
+          decorada
+          e a refeição mais divertida.</p>
+        <div class="budget-container">
+          <ul class="budget-slider">
+            <li><img src="img/orcamento/orcamento-1.png" alt="Caneca com Expresso"></li>
+          </ul>
+
+          <form class="budget-form">
+            <h2 class="subtitle">Faça o orçamento</h2>
+            <label for="model">Modelo</label>
+            <select name="model" id="model">
+              <option value="1">Clássico</option>
+              <option value="2">Moderno</option>
+              <option value="3">Rústico</option>
+            </select>
+            <label for="deadline">Prazo</label>
+            <select name="deadline" id="deadline">
+              <option value="1">2 semanas</option>
+              <option value="2">1 semana</option>
+              <option value="3">3 dias</option>
+            </select>
+
+            <div class="budget-price">
+              <span class="cust">Custo estimado:</span>
+              <span class="price budget-prices"><sup class="cipher budget-cipher">R$</sup>38,00</span>
+            </div>
+
+            <button class="sell-button budget-button">Solicitar orçamento</button>
+          </form>
+        </div>
+      </div>
+  </div>
+  </section>
+  </div>
+
+  <footer class="copy">
+    <p>Todos os direitos reservados</p>
+  </footer>
+</body>
+
+</html>
