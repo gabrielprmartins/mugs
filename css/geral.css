@@ -446,3 +446,181 @@ body {
 /* 
 font-family: 'Averia Serif Libre', cursive;
 font-family: 'Open Sans', sans-serif; */
+
+/* Responsive */
+@media (max-width: 860px) {
+  .menu {
+    display: none;
+  }
+
+  /* Titles */
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .subtitle:before {
+    width: 18px;
+    height: 18px;
+    bottom: 10px;
+  }
+
+  /* Paragraph */
+  .paragraph {
+    font-size: .925rem;
+  }
+
+  .paragraph + .paragraph {
+    margin-top: 20px;
+  }
+
+  /* Structure */
+  .structure {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px 0px;
+    padding: 0 20px;
+  }
+
+  .structure section:first-child {
+    margin-top: 30px;
+  }
+
+  .structure section:last-child {
+    margin-bottom: 30px;
+  }
+
+  .grid-column {
+    grid-column: 1;
+  }
+
+  .intro,
+  .mugs,
+  .budget {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-container {
+    grid-column: 1;
+  }
+
+  .flex-container {
+    grid-column: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .attribute + .attribute {
+    margin-left: 20px;
+  }
+
+  .logo-icon {
+    visibility: hidden;
+  }
+
+  .quote blockquote p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-container {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .mugs .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0px 32px;
+  }
+
+  .mug-control {
+    flex-direction: row;
+  }
+
+  .mug-container {
+    margin-top: 20px;
+    grid-template-columns: 1fr 2fr;
+    gap: 0 20px;
+  }
+
+  .budget-container {
+    grid-template-columns: 1fr;
+  }
+
+  .budget-form {
+    margin-top: 32px;
+  }
+
+  .quote blockquote p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 510px) {
+  .intro .attributes {
+    grid-column: 1;
+    grid-row: 4;
+    flex-direction: row;
+  }
+
+  .intro .attributes {
+    grid-column: 1;
+    grid-row: 4;
+    flex-direction: row;
+  }
+
+  .attribute .percentage,
+  .attribute .attribute-title {
+    width: 80px;
+  }
+
+  .attribute .percentage {
+    font-size: 1.5rem;
+  }
+
+  .attribute .attribute-title {
+    font-size: .8rem;
+  }
+
+  .mug-control li img {
+    max-width: 50px;
+  }
+
+  .buy {
+    grid-row: 3;
+    grid-column: 2;
+  }
+
+  .stock {
+    display: none;
+  }
+
+  .mug-image img {
+    grid-row: 1;
+    max-width: 100%;
+  }
+
+  .sell-button {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 2.4rem;
+  }
+
+  .cipher {
+    font-size: 1rem;
+  }
+
+  .encrypted-information  {
+    font-size: .875rem;
+  }
+
+  
+
+}
