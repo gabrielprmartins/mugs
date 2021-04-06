@@ -513,14 +513,8 @@ font-family: 'Open Sans', sans-serif; */
     justify-content: space-between;
   }
 
-  .intro .attributes {
-    grid-column: 1;
-    grid-row: 4;
-    flex-direction: row;
-  }
-
   .attribute + .attribute {
-    margin-left: 32px;
+    margin-left: 20px;
   }
 
   .logo-icon {
@@ -533,6 +527,11 @@ font-family: 'Open Sans', sans-serif; */
 }
 
 @media (max-width: 640px) {
+  .grid-container {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
   .mugs .grid-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -545,9 +544,8 @@ font-family: 'Open Sans', sans-serif; */
 
   .mug-container {
     margin-top: 20px;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-items: center;
+    grid-template-columns: 1fr 2fr;
+    gap: 0 20px;
   }
 
   .budget-container {
@@ -563,12 +561,66 @@ font-family: 'Open Sans', sans-serif; */
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 510px) {
   .intro .attributes {
     grid-column: 1;
     grid-row: 4;
     flex-direction: row;
   }
-}
 
-/* terminar */
+  .intro .attributes {
+    grid-column: 1;
+    grid-row: 4;
+    flex-direction: row;
+  }
+
+  .attribute .percentage,
+  .attribute .attribute-title {
+    width: 80px;
+  }
+
+  .attribute .percentage {
+    font-size: 1.5rem;
+  }
+
+  .attribute .attribute-title {
+    font-size: .8rem;
+  }
+
+  .mug-control li img {
+    max-width: 50px;
+  }
+
+  .buy {
+    grid-row: 3;
+    grid-column: 2;
+  }
+
+  .stock {
+    display: none;
+  }
+
+  .mug-image img {
+    grid-row: 1;
+    max-width: 100%;
+  }
+
+  .sell-button {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 2.4rem;
+  }
+
+  .cipher {
+    font-size: 1rem;
+  }
+
+  .encrypted-information  {
+    font-size: .875rem;
+  }
+
+  
+
+}
