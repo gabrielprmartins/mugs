@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ul {
   list-style: none;
 }
@@ -463,9 +467,9 @@ font-family: 'Open Sans', sans-serif; */
   }
 
   .subtitle:before {
-    width: 18px;
-    height: 18px;
-    bottom: 10px;
+    width: 12px;
+    height: 12px;
+    bottom: 5px;
   }
 
   /* Paragraph */
@@ -597,7 +601,17 @@ font-family: 'Open Sans', sans-serif; */
   }
 
   .stock {
-    display: none;
+    grid-column: 1 / -1;
+    margin: 32px auto 0;
+  }
+
+  .mug-container .subtitle {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+  .mug-container .paragraph {
+    margin: 20px 0 40px;
   }
 
   .mug-image img {
@@ -607,6 +621,7 @@ font-family: 'Open Sans', sans-serif; */
 
   .sell-button {
     font-size: 1rem;
+    padding: 10px 15px;
   }
 
   .price {
@@ -618,9 +633,19 @@ font-family: 'Open Sans', sans-serif; */
   }
 
   .encrypted-information  {
-    font-size: .875rem;
+    font-size: .8rem;
   }
 
-  
+  .budget-price .cust {
+    font-size: 1rem;
+  }
+
+  .budget-cipher {
+    font-size: .9rem;
+  }
+
+  .budget-prices {
+    font-size: 1.5rem;
+  }
 
 }
