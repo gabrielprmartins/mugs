@@ -273,24 +273,6 @@ body {
   margin: 32px 0 40px;
 }
 
-.stock {
-  grid-column: 1 / 2;
-  align-self: end;
-}
-
-.stock .stock-title {
-  display: block;
-  font-family: 'Averia Serif Libre', cursive;
-  color: var(--pink);
-  font-size: 1.25rem;
-}
-
-.stock .remaining {
-  font-family: 'Open Sans', sans-serif;
-  color: var(--light-black);
-  font-size: 1.15rem;
-}
-
 .buy {
   grid-column: 2;
   grid-row: 3 / 4;
@@ -327,14 +309,13 @@ body {
   margin: 20px 0;
 }
 
-.encrypted-information {
-  max-width: 200px;
+.buy .remaining {
   font-family: 'Open Sans', sans-serif;
+  color: var(--light-black);
   font-weight: 400;
-  font-size: .875rem;
-  text-align: center;
-  display: flex;
+  font-size: 1.15rem;
 }
+
 
 /* Quote */
 .quote blockquote {
@@ -596,9 +577,8 @@ body {
     grid-column: 2;
   }
 
-  .stock {
-    grid-column: 1 / -1;
-    margin-top: 32px;
+  .buy .remaining {
+    font-size: 1rem;
   }
 
   .mug-container .subtitle {
@@ -626,10 +606,6 @@ body {
 
   .cipher {
     font-size: 1rem;
-  }
-
-  .encrypted-information  {
-    font-size: .8rem;
   }
 
   .budget-price .cust {
