@@ -254,13 +254,9 @@ body {
   position: relative;
 }
 
-.mug-control li.active {
-  background-color: var(--yellow);
-}
-
 .mug-container {
   grid-column: 2 / -1;
-  display: grid;
+  display: none;
   grid-template-columns: 1fr 1fr;
 }
 
@@ -643,7 +639,3 @@ body {
     font-size: 1.5rem;
   }
 }
-
-/* // Ajeitar imagens de canecas
-// Criar json das mugs
-// Iniciar com JavaScript */
