@@ -1,0 +1,65 @@
+@media (max-width: 860px) {
+  .btn-menu {
+    display: initial;
+    width: 40px;
+    height: 40px;
+    background-color: var(--yellow);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,.15);
+    cursor: pointer;
+    transition: transform .3s;
+  }
+
+  .btn-menu::after {
+    content: '';
+    margin: 0 auto;
+    display: block;
+    width: 20px;
+    height: 3px;
+    border-radius: 4px;
+    background-color: var(--pink);
+    box-shadow: 0 6px var(--pink), 0 -6px var(--pink);
+    transition: transform .3s;
+  }
+
+  .btn-menu.active {
+    transform: rotate(90deg);
+  }
+
+  .btn-menu.active::after {
+    box-shadow: 0 8px var(--pink), 0 -8px var(--pink);
+    width: 4px;
+    height: 4px;
+  }
+  
+  .btn-menu span + span {
+    margin-top: 3px;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .menu.active {
+    animation: show-up .3s forwards;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 100%;
+    display: block;
+    background-color: var(--yellow);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,.15);
+  }
+
+  .menu.active li a {
+    display: block;
+  }
+
+  .menu.active li + li {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
