@@ -2,7 +2,7 @@ const mugControl = document.querySelector('.mug-control');
 const mugContent = document.querySelector('.mug-content');
 
 const fetchMugs = async () => {
-  const response = await fetch('../api/mugs.json');
+  const response = await fetch('./api/mugs.json');
   return await response.json();
 };
 
