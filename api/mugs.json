@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Caneca azul de porcelana",
+    "description": "Uma mug azul tende a ser associada à elegância e força, e é ligada a pessoas ambiciosas e decididas, de personalidade forte.",
+    "price": 19.90,
+    "stock": 43,
+    "thumb": ".api/mugs-img/thumb/thumb-blue-mug.png",
+    "img": ".api/mugs-img/blue-mug.png"
+  },
+  {
+    "name": "Caneca laranja de porcelana",
+    "description": "Uma mug laranja tende a ser associada à elegância e força, e é ligada a pessoas ambiciosas e decididas, de personalidade forte.",
+    "price": 22.50,
+    "stock": 28,
+    "thumb": ".api/mugs-img/thumb/thumb-orange-mug.png",
+    "img": ".api/mugs-img/orange-mug.png"
+  },
+  {
+    "name": "Caneca preta de porcelana",
+    "description": "Uma mug preta tende a ser associada à elegância e força, e é ligada a pessoas ambiciosas e decididas, de personalidade forte.",
+    "price": 38.00,
+    "stock": 13,
+    "thumb": ".api/mugs-img/thumb/thumb-black-mug.png",
+    "img": ".api/mugs-img/black-mug.png"
+  },
+  {
+    "name": "Caneca marrom de madeira",
+    "description": "Uma mug madeira tende a ser associada à elegância e força, e é ligada a pessoas ambiciosas e decididas, de personalidade forte.",
+    "price": 32.99,
+    "stock": 15,
+    "thumb": ".api/mugs-img/thumb/thumb-brown-mug.png",
+    "img": ".api/mugs-img/brown-mug.png"
+  }
+]
