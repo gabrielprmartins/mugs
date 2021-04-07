@@ -2,7 +2,7 @@ const menuButton = document.querySelector('.btn-menu');
 const menu = document.querySelector('.menu');
 const html = document.documentElement;
 
-const openMenu = (event) => {
+const openMenu = () => {
   menu.classList.add('active');
   menuButton.classList.add('active');
   setTimeout(() => html.addEventListener('click', closeMenu));
