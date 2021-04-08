@@ -42,7 +42,7 @@
   }
 
   .menu.active {
-    animation: show-up .3s forwards;
+    animation: show-up .4s forwards;
     position: absolute;
     right: 0;
     left: 0;

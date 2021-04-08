@@ -30,7 +30,8 @@ const mugsTemplate = (mugs) => {
 
       <div class="buy">
         <p>Por:</p>
-        <span class="price"><sup class="cipher">R$</sup>${price}</span>
+        <span class="price"><sup class="cipher">R$</sup>${price.toLocaleString('pt-BR', 
+        {minimumFractionDigits: 2})}</span>
         <button class="sell-button">Adicionar ao carrinho</button>
         <span class="remaining">${stock} restantes</span>
       </div>

@@ -254,6 +254,14 @@ body {
   position: relative;
 }
 
+.mug-control li:first-child {
+  border-radius: 4px 4px 0px 0px;
+}
+
+.mug-control li:last-child {
+  border-radius: 0px 0px 4px 4px;
+}
+
 .mug-container {
   grid-column: 2 / -1;
   display: none;

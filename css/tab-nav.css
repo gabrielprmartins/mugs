@@ -1,14 +1,15 @@
 .mug-control li.active {
+  transition: .4s;
   background-color: var(--yellow);
 }
 
 .mug-container.active {
-  animation: show-left .3s forwards;
+  animation: show-left .4s forwards;
   display: grid;
 }
 
 @media (max-width: 640px) {
   .mug-container.active {
-    animation: show-up .3s forwards;
+    animation: show-up .4s forwards;
   }
 }
