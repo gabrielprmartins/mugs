@@ -24,7 +24,8 @@
     <ul class="menu">
       <li><a href="#canecas" class="button-header">Nossas canecas <img src="img/seta.svg"></a></li>
       <li><a href="#orcamento">Orçamento</a></li>
-      <li><a href="#carrinho">Carrinho <span class="carrinho"><img src="img/carrinho.svg"></span></a></li>
+      <li><a href="#carrinho" data-cart="open">Carrinho <span class="carrinho"><img src="img/carrinho.svg"></span></a>
+      </li>
     </ul>
   </header>
 
@@ -127,6 +128,23 @@
   <footer class="copy">
     <p>Todos os direitos reservados</p>
   </footer>
+
+  <div class="cart-container" data-cart="cart">
+    <div class="cart">
+      <h1 class="title cart-title">Carrinho de compras</h1>
+      <ul class="cart-items">
+        <li>
+          <div class="cart-img"><img src="api/mugs-img/thumb/thumb-black-mug.png"></div>
+          <div class="cart-info">
+            <h2 class="cart-info-title">Caneca azul de porcelana</h2>
+            <span class="price budget-prices"><sup class="cipher budget-cipher">R$</sup>38,00</span>
+            <span class="stock">3</span>
+          </div>
+          <button class="remove-item">&times;</button>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <script type="module" src="js/script.js"></script>
 </body>
