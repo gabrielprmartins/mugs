@@ -56,10 +56,11 @@
 
   .menu.active li a {
     display: block;
+    padding: 10px 20px;
   }
 
   .menu.active li + li {
     margin-left: 0;
-    margin-top: 20px;
+    margin-top: 8px;
   }
 }
