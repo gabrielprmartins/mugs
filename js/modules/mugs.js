@@ -33,7 +33,7 @@ const mugsTemplate = (mugs) => {
         <span class="price"><sup class="cipher">R$</sup>${price.toLocaleString('pt-BR', 
         {minimumFractionDigits: 2})}</span>
         <button class="sell-button" data-cart-id="${id}" data-cart="add">Adicionar ao carrinho</button>
-        <span class="remaining" data-cart-id="${id}">${stock} restantes</span>
+        <span class="remaining">${stock} restantes</span>
       </div>
     </article>
   `).join('');
@@ -88,10 +88,12 @@ const cart = (mugs) => {
     setTimeout(() => document.body.removeChild(containerMessage), 1000);
   };
 
-  const addCartItem = ({ id, name, thumb, price }) => {
+  const addCartItem = (event) => {
+    const { id, name, thumb, price } = mugs[+event.target.dataset.cartId]
     const cartItems = document.querySelector('.cart-items');
+    let idCount = 0;
     cartItems.innerHTML += `
-      <li data-cart="${id}">
+      <li data-cart="${idCount++}">
         <div class="cart-img"><img src="${thumb}"></div>
         <div class="cart-info">
           <h2 class="cart-info-title">${name}</h2>
@@ -101,7 +103,7 @@ const cart = (mugs) => {
         <button class="remove-item" data-cart-remove="${id}">&times;</button>
       </li>
     `;
-    addEventCart(cartItems);
+    addEventsCart();
   };
 
   const cartCount = (added) => {
@@ -110,41 +112,24 @@ const cart = (mugs) => {
     if (!added) cart.dataset.cart--;
   };
 
-  const removeCartItem = (id, cartItems) => {
-    const itemsCart = cartItems.querySelectorAll('li');
-    itemsCart.forEach((item) => {
-      if (item.dataset.cart === id) {
-        item.classList.add('dismiss');
-        setTimeout(() => item.remove(), 300);
-        cartCount(false);
-        disableCart();
-        // remover 1 apenas
-      }  
-    });
+  const removeCartItem = (event) => {
+    const cartList = event.target.parentElement;
+    cartList.classList.add('dismiss');
+    setTimeout(() => cartList.remove(), 300);
+    cartCount(false);
+    if (cartList.parentElement.children.length < 2) {
+      disableCart();
+    }
+
+    const cartId = +event.target.dataset.cartRemove;
+    changeStock(cartId, true);
   };
 
-  const addEventCart = (cartItems) => {
+  const addEventsCart = () => {
     const removeItemButton = document.querySelectorAll('.remove-item');
     removeItemButton.forEach((button) => {
-      const id = button.dataset.cartRemove;
-      button.addEventListener('click', () => {
-        removeCartItem(id, cartItems);
-      });
+      button.addEventListener('click', removeCartItem);
     });
-  };
-
-  const onlyMugEvent = (id) => {
-    mugs.forEach((mug) => {
-      if (mug.id === id) {
-        changeStock(mug);
-        addCartItem(mug);
-      }
-    });
-  };
-
-  const addEventMug = (event) => {
-    const mugId = event.target.dataset.cartId;
-    onlyMugEvent(mugId);
   };
 
   const enableCart = () => {
@@ -161,36 +146,48 @@ const cart = (mugs) => {
     totalCart.classList.remove(activeClass);
   };
 
-  const soldOutProduct = (id) => {
-    addItemToCartButton.forEach((button) => {
-      if (button.dataset.cartId === id) {
-        button.classList.add('disabled');
-        button.innerText = 'Produto esgotado';
-        button.disabled = true;
-      }
-    });
+  const soldOutProduct = (button) => {
+    button.classList.add('disabled');
+    button.innerText = 'Produto esgotado';
+    button.disabled = true;
   };
 
-  const changeStock = ({ id }) => {
-    const remainings = document.querySelectorAll('.remaining');
-    remainings.forEach((remaining) => {
-      if (remaining.dataset.cartId === id) {
+  const availableProduct = (button) => {
+    button.classList.remove('disabled');
+    button.innerText = 'Adicionar ao carrinho';
+    button.disabled = false;
+  };
+
+  const changeStock = (itemId, change) => {
+    const buyContainer = document.querySelectorAll('.sell-button');
+    buyContainer.forEach((buyButton) => {
+      if (+buyButton.dataset.cartId === itemId) {
+        const remaining = buyButton.nextElementSibling;
         let stock = +remaining.innerText.slice(0,2);
-        stock--;
+        if (change) stock++;
+        if (!change) stock--;
         remaining.innerText = `${stock} restantes`;
         if (stock < 1) {
-          soldOutProduct(id);
+          soldOutProduct(buyButton);
+        } else {
+          availableProduct(buyButton)
         }
       }
     });
   };
 
+  const activeChangeStock = (event) => {
+    const itemID = +event.target.dataset.cartId;
+    changeStock(itemID, false);
+  };
+
   const addEventCartButton = () => {
     addItemToCartButton.forEach((button) => {
       button.addEventListener('click', addedMessage);
-      button.addEventListener('click', addEventMug);
+      button.addEventListener('click', addCartItem);
       button.addEventListener('click', enableCart);
       button.addEventListener('click', () => cartCount(true));
+      button.addEventListener('click', activeChangeStock);
     });
   };
 
