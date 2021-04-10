@@ -114,12 +114,11 @@ const cart = (mugs) => {
 
   const removeCartItem = (event) => {
     const cartList = event.target.parentElement;
-    cartList.classList.add('dismiss');
-    setTimeout(() => cartList.remove(), 300);
     cartCount(false);
     if (cartList.parentElement.children.length < 2) {
       disableCart();
     }
+    cartList.remove();
 
     const cartId = +event.target.dataset.cartRemove;
     changeStock(cartId, true);
