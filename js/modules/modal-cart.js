@@ -22,10 +22,10 @@ const addCartButtonEvent = () => {
   buttonCart.forEach((button) => button.addEventListener('click', openCart));
 };
 
-const initCart = () => {
+const initModalCart = () => {
   if (buttonCart.length) {
     addCartButtonEvent();
   }
 };
 
-export {initCart };
+export {initModalCart };
