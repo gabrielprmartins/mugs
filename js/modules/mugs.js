@@ -128,6 +128,7 @@ const cart = (mugs) => {
     const removeItemButton = document.querySelectorAll('.remove-item');
     removeItemButton.forEach((button) => {
       button.addEventListener('click', removeCartItem);
+      button.addEventListener('click', totalPrice);
     });
   };
 
@@ -180,6 +181,23 @@ const cart = (mugs) => {
     changeStock(itemID, false);
   };
 
+  const formatPrice = (priceContainer) => {
+    return +priceContainer.innerText.replace('R$', '').replace(',', '.');
+  };
+
+  const totalPrice = () => {
+    const listCartItem = document.querySelectorAll('.cart-items li');
+    const totalContainer = document.querySelector('[data-cart="total"]');
+    let total = 0;
+    listCartItem.forEach((cartItem) => {
+      let priceContainer = cartItem.querySelector('.budget-prices');
+      let priceItems = formatPrice(priceContainer);
+      total += priceItems;
+      totalContainer.innerHTML = `<sup class="cipher budget-cipher">R$</sup>
+        ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    });
+  };
+
   const addEventCartButton = () => {
     addItemToCartButton.forEach((button) => {
       button.addEventListener('click', addedMessage);
@@ -187,6 +205,7 @@ const cart = (mugs) => {
       button.addEventListener('click', enableCart);
       button.addEventListener('click', () => cartCount(true));
       button.addEventListener('click', activeChangeStock);
+      button.addEventListener('click', totalPrice);
     });
   };
 
