@@ -89,7 +89,7 @@ const cart = (mugs) => {
   };
 
   const addCartItem = (event) => {
-    const { id, name, thumb, price } = mugs[+event.target.dataset.cartId]
+    const { id, name, thumb, price } = mugs[+event.target.dataset.cartId];
     const cartItems = document.querySelector('.cart-items');
     let idCount = 0;
     cartItems.innerHTML += `
@@ -169,7 +169,7 @@ const cart = (mugs) => {
         if (stock < 1) {
           soldOutProduct(buyButton);
         } else {
-          availableProduct(buyButton)
+          availableProduct(buyButton);
         }
       }
     });
