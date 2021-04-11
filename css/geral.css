@@ -169,7 +169,7 @@ body {
   align-self: flex-end;
 }
 
-.intro .button-intro {
+.button-intro {
   background-color: var(--yellow);
   border: none;
   border-radius: 4px;
@@ -622,7 +622,7 @@ body {
     max-width: 100%;
   }
 
-  .sell-button {
+  .sell-button, .button-intro {
     font-size: 1rem;
     padding: 10px 15px;
   }

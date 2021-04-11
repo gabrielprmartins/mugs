@@ -5,6 +5,3 @@ import { initModalCart } from './modules/modal-cart.js';
 addMenuEvent();
 addMugsIntoDom();
 initModalCart();
-
-
-// Fazer fetch da api das mugs

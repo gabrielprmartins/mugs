@@ -1,3 +1,5 @@
+import { addCepApiEvent } from './cep-api.js';
+
 const mugControl = document.querySelector('.mug-control');
 const mugContent = document.querySelector('.mug-content');
 
@@ -92,17 +94,19 @@ const cart = (mugs) => {
     const { id, name, thumb, price } = mugs[+event.target.dataset.cartId];
     const cartItems = document.querySelector('.cart-items');
     let idCount = 0;
-    cartItems.innerHTML += `
-      <li data-cart="${idCount++}">
-        <div class="cart-img"><img src="${thumb}"></div>
-        <div class="cart-info">
-          <h2 class="cart-info-title">${name}</h2>
-          <span class="price budget-prices"><sup class="cipher budget-cipher">R$</sup>${price.toLocaleString('pt-BR', 
-        {minimumFractionDigits: 2})}</span>
-        </div>
-        <button class="remove-item" data-cart-remove="${id}">&times;</button>
-      </li>
-    `;
+    if (cartItems) {
+      cartItems.innerHTML += `
+        <li data-cart="${idCount++}">
+          <div class="cart-img"><img src="${thumb}"></div>
+          <div class="cart-info">
+            <h2 class="cart-info-title">${name}</h2>
+            <span class="price budget-prices"><sup class="cipher budget-cipher">R$</sup>${price.toLocaleString('pt-BR', 
+          {minimumFractionDigits: 2})}</span>
+          </div>
+          <button class="remove-item" data-cart-remove="${id}">&times;</button>
+        </li>
+      `;
+    }
     addEventsCart();
   };
 
@@ -135,15 +139,19 @@ const cart = (mugs) => {
   const enableCart = () => {
     const empty = document.querySelector('.empty-cart');
     const totalCart = document.querySelector('.cart-total');
-    empty.classList.remove(activeClass);
-    totalCart.classList.add(activeClass);
+    if (empty && totalCart) {
+      empty.classList.remove(activeClass);
+      totalCart.classList.add(activeClass);
+    }
   };
 
   const disableCart = () => {
     const empty = document.querySelector('.empty-cart');
     const totalCart = document.querySelector('.cart-total');
-    empty.classList.add(activeClass);
-    totalCart.classList.remove(activeClass);
+    if (empty && totalCart) {
+      empty.classList.add(activeClass);
+      totalCart.classList.remove(activeClass);
+    }
   };
 
   const soldOutProduct = (button) => {
@@ -209,7 +217,8 @@ const cart = (mugs) => {
     });
   };
 
-  addEventCartButton();
+  if (addItemToCartButton.length) addEventCartButton();
+  addCepApiEvent();
 };
 
 export { addMugsIntoDom };

@@ -169,6 +169,7 @@
 @media (max-width: 510px) {
   .cart {
     padding: 20px;
+    background: linear-gradient(to bottom, var(--yellow) 130px, var(--bg-body) 130px);
   }
   .cart-img {
     padding: 32px 10px;
