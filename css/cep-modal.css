@@ -28,6 +28,13 @@
   box-shadow: 5px 5px 20px 0px rgba(0,0,0,.15);
 }
 
+.cep-container input:disabled,
+.search-cep:disabled {
+  transition: .4s;
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
 .search-cep {
   background: #fff url('../img/lupe.svg') no-repeat center center;
   border-radius: 0px 4px 4px 0px;
@@ -53,9 +60,14 @@
 }
 
 .cep-match li, .not-find-cep {
+  animation: show-up .4s forwards;
   font-family: 'Open Sans', sans-serif;
   color: var(--black);
   font-size: 1.2rem;
+}
+
+.not-find-cep.desactive {
+  display: none;
 }
 
 .cep-match li + li {

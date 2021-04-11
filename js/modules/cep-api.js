@@ -26,18 +26,19 @@ const confirmDelivery = () => {
   addEventReturnButton();
 };
 
-const resetCart = () => {
-  const cart = document.querySelector('.carrinho');
-  while (cart.dataset.cart >= 1) cart.dataset.cart--;
-  const cartItems = cartList.querySelectorAll('li');
-  cartItems.forEach((item) => item.remove()); 
+const disableInputCep = () => {
+  const cepInput = document.querySelector('.search input');
+  const searchButton = document.querySelector('.search-cep');
+  cepInput.disabled = true;
+  searchButton.disabled = true;
 };
 
 const addEventButtonCep = () => {
+  disableInputCep();
   const confirm = document.querySelector('[data-cep="confirm"]');
   const cancel = document.querySelector('[data-cep="cancel"]');
   confirm.addEventListener('click', confirmDelivery);
-  cancel.addEventListener('click', windowOnload);
+  cancel.addEventListener('click', openCepModal);
 };
 
 const addCepInfoIntoDom = ({ cep, logradouro, bairro, localidade, uf }) => {
@@ -60,17 +61,14 @@ const addCepInfoIntoDom = ({ cep, logradouro, bairro, localidade, uf }) => {
 };
 
 const noFindCep = (condition) => {
-  const messageError = '<p class="not-find-cep">Nenhum cep foi encontrado</p>'; 
-  if (condition) cartModal.innerHTML += messageError;
-  if (!condition) {
-    const message = document.querySelector('.not-find-cep');
-    if (message) message.classList.add('desactive');
-  };
+  const message = document.querySelector('.not-find-cep');
+  if (message) {
+    if (condition) message.classList.remove('desactive');
+    if (!condition) message.classList.add('desactive');
+  }
 };
 
-const getCepInfo = async () => {
-  const cepInput = document.querySelector('.search input');
-  const cep = cepInput.value.replace(/\D/g, '');
+const getCepInfo = async (cep) => {
   try {
     const response = await fetch(`https://viacep.com.br/ws/${cep}/json`);
     const json = await response.json();
@@ -82,8 +80,20 @@ const getCepInfo = async () => {
   }
 };
 
+const checkCep = () => {
+  const cepInput = document.querySelector('.search input');
+  const cep = cepInput.value;
+  const regexCep = /\d{5}[-\s]?\d{3}/g;
+  if (cep.match(regexCep)) {
+    noFindCep(false);
+    getCepInfo(cep);
+    return;
+  }
+  noFindCep(true);
+};
+
 const addCepEvent = (search) => {
-  search.addEventListener('click', getCepInfo);
+  search.addEventListener('click', checkCep);
 };
 
 const openCepModal = () => {
@@ -96,6 +106,7 @@ const openCepModal = () => {
         <button class="search-cep"></button>
       </div>
     </div>
+    <p class="not-find-cep desactive">Nenhum cep foi encontrado</p>
   `;
   const search = cartModal.querySelector('.search-cep');
   addCepEvent(search);
