@@ -13,6 +13,7 @@ const addEventReturnButton = () => {
 };
 
 const confirmDelivery = () => {
+  localStorage.clear();
   cartModal.innerHTML = `
     <h1 class="title cart-title">Produto a caminho!</h1>
     <div class="confirm-delivery">

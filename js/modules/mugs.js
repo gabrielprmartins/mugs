@@ -78,6 +78,7 @@ const initTabNav = (mugs) => {
 const cart = (mugs) => {
   const addItemToCartButton = Array.from(document.querySelectorAll('[data-cart="add"]'));
   const activeClass = 'active';
+  let idCount = localStorage.length;
   
   const addedMessage = () => {
     const containerMessage = document.createElement('div');
@@ -93,7 +94,6 @@ const cart = (mugs) => {
   const addCartItem = (event) => {
     const { id, name, thumb, price } = mugs[+event.target.dataset.cartId];
     const cartItems = document.querySelector('.cart-items');
-    let idCount = 0;
     if (cartItems) {
       cartItems.innerHTML += `
         <li data-cart="${idCount++}">
@@ -107,6 +107,7 @@ const cart = (mugs) => {
         </li>
       `;
     }
+    saveCartItems(cartItems);
     addEventsCart();
   };
 
@@ -126,6 +127,8 @@ const cart = (mugs) => {
 
     const cartId = +event.target.dataset.cartRemove;
     changeStock(cartId, true);
+    const cartIdCount = +event.target.parentElement.dataset.cart;
+    discartCartItems(cartIdCount);
   };
 
   const addEventsCart = () => {
@@ -217,8 +220,38 @@ const cart = (mugs) => {
     });
   };
 
+  const saveCartItems = (cartList) => {
+    const cartItemsList = cartList.querySelectorAll('li');
+
+    cartItemsList.forEach((item) => {
+      localStorage[idCount] = `<li data-cart="${idCount}">${item.innerHTML}</li>`;
+    });
+  };
+
+  const discartCartItems = (idCount) => {
+    localStorage.removeItem(idCount + 1);
+  };
+
+  const setCartItems = () => {
+    if (localStorage.length) {
+      enableCart();
+      addEventsCart();
+      const cartItems = document.querySelector('.cart-items');
+      const properties = Object.keys(localStorage);
+      properties.forEach((propertie) => {
+        cartCount(true);
+        const regexDigit = /\d/g;
+        if (propertie.match(regexDigit)) cartItems.innerHTML += localStorage[propertie];
+        // salvar stock no localStorage
+      });
+    }
+  };
+
   if (addItemToCartButton.length) addEventCartButton();
   addCepApiEvent();
+  setCartItems();
+  totalPrice();
+  addEventsCart();
 };
 
 export { addMugsIntoDom };
