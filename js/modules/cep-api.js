@@ -1,31 +1,15 @@
 const openCepModalButton = document.querySelector('.cart-button');
 const cartModal = document.querySelector('.cart');
+const cloneCartModal = cartModal.cloneNode(true);
 const cartList = document.querySelector('.cart-items');
 
-const purchaseSuccessfully = () => {
-  const addToCartButtons = document.querySelectorAll('[data-cart="add"]');
-  addToCartButtons.forEach((button) => {
-    button.classList.remove('disabled');
-    button.disabled = false;
-    button.innerText = 'Adicionar ao carrinho';
-  });
-};
-
-const closeModalCart = () => {
-  const cart = document.querySelector('[data-cart="cart"]');
-  cart.classList.add('dismiss');
-  setTimeout(() => {
-    cart.classList.remove('dismiss');
-    cart.classList.remove('active');
-  }, 300);
-};
+const windowOnload = () => {
+  window.location.reload();
+}
 
 const addEventReturnButton = () => {
   const returnButton = document.querySelector('[data-cep="return"]');
-  returnButton.addEventListener('click', closeModalCart);
-  returnButton.addEventListener('click', purchaseSuccessfully);
-  // adicionar eventos de limpar carrinho e voltar ao estado
-  // inicial da aplicação
+  returnButton.addEventListener('click', windowOnload);
 };
 
 const confirmDelivery = () => {
@@ -36,21 +20,24 @@ const confirmDelivery = () => {
         <img src="img/shopping-truck.svg" alt="Caminhão de Vendas">
       </figure>
       <p class="paragraph">Obrigado por comprar conosco!</p>
-      <button class="sell-button" data-cep="return">Continuar comprando</button>
+      <button class="sell-button" data-cep="return">Realizar novas compras</button>
     </div>
   `;
   addEventReturnButton();
 };
 
-const declineDelivery = () => {
-  cartModal.innerHTML = cartList.innerHTML;
+const resetCart = () => {
+  const cart = document.querySelector('.carrinho');
+  while (cart.dataset.cart >= 1) cart.dataset.cart--;
+  const cartItems = cartList.querySelectorAll('li');
+  cartItems.forEach((item) => item.remove()); 
 };
 
 const addEventButtonCep = () => {
   const confirm = document.querySelector('[data-cep="confirm"]');
   const cancel = document.querySelector('[data-cep="cancel"]');
   confirm.addEventListener('click', confirmDelivery);
-  cancel.addEventListener('click', declineDelivery);
+  cancel.addEventListener('click', windowOnload);
 };
 
 const addCepInfoIntoDom = ({ cep, logradouro, bairro, localidade, uf }) => {
