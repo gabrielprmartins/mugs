@@ -78,7 +78,7 @@ const initTabNav = (mugs) => {
 const cart = (mugs) => {
   const addItemToCartButton = Array.from(document.querySelectorAll('[data-cart="add"]'));
   const activeClass = 'active';
-  let idCount = localStorage.length;
+  let idCount = localStorage.length - 1;
   
   const addedMessage = () => {
     const containerMessage = document.createElement('div');
@@ -123,8 +123,9 @@ const cart = (mugs) => {
     if (cartList.parentElement.children.length < 2) {
       disableCart();
     }
+    
     cartList.remove();
-
+    
     const cartId = +event.target.dataset.cartRemove;
     changeStock(cartId, true);
     const cartIdCount = +event.target.parentElement.dataset.cart;
@@ -185,6 +186,7 @@ const cart = (mugs) => {
         }
       }
     });
+    saveStock();
   };
 
   const activeChangeStock = (event) => {
@@ -215,33 +217,56 @@ const cart = (mugs) => {
       button.addEventListener('click', addCartItem);
       button.addEventListener('click', enableCart);
       button.addEventListener('click', () => cartCount(true));
+      button.addEventListener('click', saveStock);
       button.addEventListener('click', activeChangeStock);
       button.addEventListener('click', totalPrice);
     });
   };
 
+  const saveStock = () => {
+    const buyContainer = document.querySelectorAll('[data-cart="add"]');
+    let stockArray = [];
+    buyContainer.forEach((button, index) => {
+      stockArray[index] = (+button.nextElementSibling.innerText.slice(0,2));
+      localStorage.stock = stockArray;
+    });
+  };
+
   const saveCartItems = (cartList) => {
     const cartItemsList = cartList.querySelectorAll('li');
-
     cartItemsList.forEach((item) => {
       localStorage[idCount] = `<li data-cart="${idCount}">${item.innerHTML}</li>`;
     });
   };
 
   const discartCartItems = (idCount) => {
-    localStorage.removeItem(idCount + 1);
+    localStorage.removeItem(idCount);
+  };
+
+  const setStock = () => {
+    const buyContainer = document.querySelectorAll('[data-cart="add"]');
+    let stockLocalStorage = localStorage.stock;
+    let stockItems;
+    if (stockLocalStorage) {
+      stockItems = stockLocalStorage.split(',');
+      stockItems.forEach((stock, index) => {
+        buyContainer[index].nextElementSibling.innerText = `${stock} restantes`;
+      });
+    }
   };
 
   const setCartItems = () => {
-    if (localStorage.length) {
+    if (localStorage.length > 1) {
       enableCart();
       addEventsCart();
       const cartItems = document.querySelector('.cart-items');
       const properties = Object.keys(localStorage);
       properties.forEach((propertie) => {
-        cartCount(true);
-        const regexDigit = /\d/g;
-        if (propertie.match(regexDigit)) cartItems.innerHTML += localStorage[propertie];
+        if (propertie !== 'stock') {
+          cartCount(true);
+          const regexDigit = /\d/g;
+          if (propertie.match(regexDigit)) cartItems.innerHTML += localStorage[propertie];
+        }
         // salvar stock no localStorage
       });
     }
@@ -250,6 +275,7 @@ const cart = (mugs) => {
   if (addItemToCartButton.length) addEventCartButton();
   addCepApiEvent();
   setCartItems();
+  setStock();
   totalPrice();
   addEventsCart();
 };
