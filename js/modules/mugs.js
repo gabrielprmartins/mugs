@@ -107,7 +107,7 @@ const cart = (mugs) => {
         </li>
       `;
     }
-    saveCartItems(cartItems);
+    saveCartItems();
     addEventsCart();
   };
 
@@ -123,7 +123,7 @@ const cart = (mugs) => {
     if (cartList.parentElement.children.length < 2) {
       disableCart();
     }
-    
+
     cartList.remove();
     
     const cartId = +event.target.dataset.cartRemove;
@@ -232,7 +232,8 @@ const cart = (mugs) => {
     });
   };
 
-  const saveCartItems = (cartList) => {
+  const saveCartItems = () => {
+    const cartList = document.querySelector('.cart-items');
     const cartItemsList = cartList.querySelectorAll('li');
     cartItemsList.forEach((item) => {
       localStorage[idCount] = `<li data-cart="${idCount}">${item.innerHTML}</li>`;
@@ -240,7 +241,7 @@ const cart = (mugs) => {
   };
 
   const discartCartItems = (idCount) => {
-    localStorage.removeItem(idCount);
+    localStorage.removeItem(idCount + 1);
   };
 
   const setStock = () => {
