@@ -122,6 +122,7 @@ const cart = (mugs) => {
     cartCount(false);
     if (cartList.parentElement.children.length < 2) {
       disableCart();
+      localStorage.clear();
     }
 
     cartList.remove();
