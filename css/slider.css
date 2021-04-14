@@ -1,0 +1,8 @@
+.budget-slider li {
+  display: none;
+}
+
+.budget-slider li.active {
+  animation: show-opacity .4s forwards;
+  display: initial;
+}
