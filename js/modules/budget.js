@@ -7,6 +7,7 @@ const formItems = {
   custContainer: budgetForm.querySelector('.budget-prices'),
   cust: +budgetForm.querySelector('.budget-prices').innerText.replace('R$', '')
     .replace(',', '.'),
+  buttonBudget: budgetForm.querySelector('.budget-button'),
 };
 
 const changeCust = (cust) => {
@@ -41,10 +42,17 @@ const changeCustDeadline = (event) => {
   getTotalCust(value1, value2);
 };
 
+const demonstrativeMessage = (event) => {
+  event.preventDefault(); 
+  console.log(event.target);
+  // adicionar tooltip
+};
+
 const addBudgetEvents = () => {
-  const { selectModel, selectDeadline } = formItems;
+  const { selectModel, selectDeadline, buttonBudget } = formItems;
   selectModel.addEventListener('change', changeCustModel);
   selectDeadline.addEventListener('change', changeCustDeadline);
+  buttonBudget.addEventListener('click', demonstrativeMessage);
 };
 
 export { addBudgetEvents }; 
