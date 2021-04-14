@@ -1,5 +1,5 @@
 const budgetForm = document.querySelector('.budget-form');
-let totalCust = 0;
+let value1 = 0, value2 = 0;
 
 const formItems = {
   selectModel: budgetForm.querySelector('select[name="model"]'),
@@ -14,8 +14,8 @@ const changeCust = (cust) => {
     R$</sup>${cust.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</span>`;
 };
 
-const getTotalCust = (cust) => {
-  totalCust += cust;
+const getTotalCust = (cust1, cust2) => {
+  const totalCust = cust1  + cust2;
   changeCust(totalCust);
 };
 
@@ -26,7 +26,8 @@ const changeCustModel = (event) => {
     modern: 25.30,
     rustic: 10.50,
   };
-  getTotalCust(price[value]);
+  value1 = price[value];
+  getTotalCust(value1, value2);
 };
 
 const changeCustDeadline = (event) => {
@@ -36,7 +37,8 @@ const changeCustDeadline = (event) => {
     oneWeek: 5.50,
     threeDays: 15.80,
   };
-  getTotalCust(price[value]);
+  value2 = price[value];
+  getTotalCust(value1, value2);
 };
 
 const addBudgetEvents = () => {
