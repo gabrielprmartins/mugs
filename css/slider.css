@@ -1,8 +1,14 @@
 .budget-slider li {
   display: none;
+  transition: .4s;
 }
 
 .budget-slider li.active {
-  animation: show-opacity .4s forwards;
+  animation: show-opacity 3s forwards;
   display: initial;
 }
+
+.budget-slider li.dismiss {
+  animation: dismiss-opacity 3s forwards;
+}
+
