@@ -42,17 +42,10 @@ const changeCustDeadline = (event) => {
   getTotalCust(value1, value2);
 };
 
-const demonstrativeMessage = (event) => {
-  event.preventDefault(); 
-  console.log(event.target);
-  // adicionar tooltip
-};
-
 const addBudgetEvents = () => {
   const { selectModel, selectDeadline, buttonBudget } = formItems;
   selectModel.addEventListener('change', changeCustModel);
   selectDeadline.addEventListener('change', changeCustDeadline);
-  buttonBudget.addEventListener('click', demonstrativeMessage);
 };
 
 export { addBudgetEvents }; 

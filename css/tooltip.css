@@ -1,0 +1,30 @@
+.tooltip {
+  animation: show-tooltip .4s;
+  display: none;
+  position: absolute;
+  bottom: -40px;
+  background: var(--green);
+  padding: 15px;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--light-black);
+  font-weight: 400;
+  font-size: .9rem;
+  border-radius: 4px;
+  box-shadow: 10px 10px 20px 0px rgba(0,0,0,.15);
+}
+
+.tooltip::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 45%;
+  right: 45%;
+  top: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid var(--green);
+}
+
+.tooltip.active {
+  display: block;
+}
