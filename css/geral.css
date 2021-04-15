@@ -105,6 +105,7 @@ body {
   color: var(--light-black);
   font-size: 1.125rem;
   display: block;
+  cursor: pointer;
 }
 
 .menu li + li {
