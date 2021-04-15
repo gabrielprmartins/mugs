@@ -28,3 +28,9 @@
 .tooltip.active {
   display: block;
 }
+
+@media (max-width: 640px) {
+  .tooltip {
+    bottom: -45px;
+  }
+}
