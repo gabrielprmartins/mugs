@@ -28,4 +28,4 @@ const initModalCart = () => {
   }
 };
 
-export {initModalCart };
+export { initModalCart };

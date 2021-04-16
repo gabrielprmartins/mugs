@@ -1,4 +1,5 @@
 const linksMenu = document.querySelectorAll('.menu a[href^="#"]');
+const linkMug = document.querySelector('[data-link]');
 
 const getMenuHeigth = () => {
   const menu = document.querySelector('.header');
@@ -7,8 +8,8 @@ const getMenuHeigth = () => {
 };
 
 const getTopFromElement = (event) => {
-  const element = event.target;
-  const id = element.getAttribute('href'); 
+  const element = event.currentTarget;
+  const id = element.getAttribute('href');
   const to = document.querySelector(id).offsetTop;
   const menuHeight = getMenuHeigth();
   return to - menuHeight;
@@ -16,16 +17,17 @@ const getTopFromElement = (event) => {
 
 const scrollToPosition = (to) => {
   smoothScrollTo(0, to);
-}
+};
 
 const scrollTo = (event) => {
   event.preventDefault();
   const topItem = getTopFromElement(event);
   scrollToPosition(topItem);
-}
+};
 
 const addSmoothScrollEvent = () => {
   linksMenu.forEach((link) => link.addEventListener('click', scrollTo));
+  linkMug.addEventListener('click', scrollTo);
 };
 
 /*
