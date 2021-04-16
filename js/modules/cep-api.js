@@ -1,11 +1,9 @@
 const openCepModalButton = document.querySelector('.cart-button');
 const cartModal = document.querySelector('.cart');
-const cloneCartModal = cartModal.cloneNode(true);
-const cartList = document.querySelector('.cart-items');
 
 const windowOnload = () => {
   window.location.reload();
-}
+};
 
 const addEventReturnButton = () => {
   const returnButton = document.querySelector('[data-cep="return"]');

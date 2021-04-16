@@ -5,7 +5,7 @@ const mugContent = document.querySelector('.mug-content');
 
 const fetchMugs = async () => {
   const response = await fetch('./api/mugs.json');
-  return await response.json();
+  return response.json();
 };
 
 const addMugsIntoDom = async () => {
@@ -32,8 +32,7 @@ const mugsTemplate = (mugs) => {
 
       <div class="buy">
         <p>Por:</p>
-        <span class="price"><sup class="cipher">R$</sup>${price.toLocaleString('pt-BR', 
-        {minimumFractionDigits: 2})}</span>
+        <span class="price"><sup class="cipher">R$</sup>${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
         <button class="sell-button" data-cart-id="${id}" data-cart="add">Adicionar ao carrinho</button>
         <span class="remaining">${stock} restantes</span>
       </div>
@@ -68,26 +67,26 @@ const initTabNav = (mugs) => {
       });
     });
   };
-    
+
   if (tabControls.length && tabContent.length) {
     addActiveClass(2);
     addTabNavEvents(tabControls);
     cart(mugs);
-  } 
-}
+  }
+};
 
 // Cart
 const cart = (mugs) => {
   const addItemToCartButton = Array.from(document.querySelectorAll('[data-cart="add"]'));
   const activeClass = 'active';
   let idCount = localStorage.length - 1;
-  
+
   // Added to cart message
   const addedMessage = () => {
     const containerMessage = document.createElement('div');
     containerMessage.classList.add('added-message');
     const paragraphMessage = document.createElement('p');
-    const message = 'Item adicionado ao carrinho'; 
+    const message = 'Item adicionado ao carrinho';
     paragraphMessage.innerText += message;
     containerMessage.appendChild(paragraphMessage);
     document.body.appendChild(containerMessage);
@@ -103,8 +102,7 @@ const cart = (mugs) => {
           <div class="cart-img"><img src="${thumb}"></div>
           <div class="cart-info">
             <h2 class="cart-info-title">${name}</h2>
-            <span class="price budget-prices"><sup class="cipher budget-cipher">R$</sup>${price.toLocaleString('pt-BR', 
-          {minimumFractionDigits: 2})}</span>
+            <span class="price budget-prices"><sup class="cipher budget-cipher">R$</sup>${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
           </div>
           <button class="remove-item" data-cart-remove="${id}">&times;</button>
         </li>
@@ -177,7 +175,7 @@ const cart = (mugs) => {
     buyContainer.forEach((buyButton) => {
       if (+buyButton.dataset.cartId === itemId) {
         const remaining = buyButton.nextElementSibling;
-        let stock = +remaining.innerText.slice(0,2);
+        let stock = +remaining.innerText.slice(0, 2);
         if (change) stock++;
         if (!change) stock--;
         remaining.innerText = `${stock} restantes`;
@@ -196,20 +194,18 @@ const cart = (mugs) => {
     changeStock(itemID, false);
   };
 
-  const formatPrice = (priceContainer) => {
-    return +priceContainer.innerText.replace('R$', '').replace(',', '.');
-  };
+  const formatPrice = (priceContainer) => +priceContainer.innerText.replace('R$', '').replace(',', '.');
 
   const totalPrice = () => {
     const listCartItem = document.querySelectorAll('.cart-items li');
     const totalContainer = document.querySelector('[data-cart="total"]');
     let total = 0;
     listCartItem.forEach((cartItem) => {
-      let priceContainer = cartItem.querySelector('.budget-prices');
-      let priceItems = formatPrice(priceContainer);
+      const priceContainer = cartItem.querySelector('.budget-prices');
+      const priceItems = formatPrice(priceContainer);
       total += priceItems;
       totalContainer.innerHTML = `<sup class="cipher budget-cipher">R$</sup>
-        ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+        ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
     });
   };
 
@@ -251,7 +247,7 @@ const cart = (mugs) => {
   // Set stock in DOM
   const setStock = () => {
     const buyContainer = document.querySelectorAll('[data-cart="add"]');
-    let stockLocalStorage = localStorage.stock;
+    const stockLocalStorage = localStorage.stock;
     let stockItems;
     if (stockLocalStorage) {
       stockItems = stockLocalStorage.split(',');

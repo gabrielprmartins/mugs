@@ -18,7 +18,7 @@ const enableTooltip = (event) => {
 
 const disableTooltip = (event) => {
   event.target.nextElementSibling.classList.remove(activeClass);
-  event.target.parentElement.removeChild(event.target.nextElementSibling)
+  event.target.parentElement.removeChild(event.target.nextElementSibling);
 };
 
 const preventEvents = (event) => {
