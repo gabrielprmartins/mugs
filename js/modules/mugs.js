@@ -44,6 +44,7 @@ const mugsTemplate = (mugs) => {
   initTabNav(mugs);
 };
 
+// TabNav
 const initTabNav = (mugs) => {
   const tabControls = mugControl.querySelectorAll('li');
   const tabContent = mugContent.querySelectorAll('article');
@@ -75,11 +76,13 @@ const initTabNav = (mugs) => {
   } 
 }
 
+// Cart
 const cart = (mugs) => {
   const addItemToCartButton = Array.from(document.querySelectorAll('[data-cart="add"]'));
   const activeClass = 'active';
   let idCount = localStorage.length - 1;
   
+  // Added to cart message
   const addedMessage = () => {
     const containerMessage = document.createElement('div');
     containerMessage.classList.add('added-message');
@@ -124,9 +127,7 @@ const cart = (mugs) => {
       disableCart();
       localStorage.clear();
     }
-
     cartList.remove();
-    
     const cartId = +event.target.dataset.cartRemove;
     changeStock(cartId, true);
     const cartIdCount = +event.target.parentElement.dataset.cart;
@@ -224,6 +225,7 @@ const cart = (mugs) => {
     });
   };
 
+  // Save stock in localStorage
   const saveStock = () => {
     const buyContainer = document.querySelectorAll('[data-cart="add"]');
     let stockArray = [];
@@ -233,6 +235,7 @@ const cart = (mugs) => {
     });
   };
 
+  // Save cart items in localStorage
   const saveCartItems = () => {
     const cartList = document.querySelector('.cart-items');
     const cartItemsList = cartList.querySelectorAll('li');
@@ -245,6 +248,7 @@ const cart = (mugs) => {
     localStorage.removeItem(idCount + 1);
   };
 
+  // Set stock in DOM
   const setStock = () => {
     const buyContainer = document.querySelectorAll('[data-cart="add"]');
     let stockLocalStorage = localStorage.stock;
@@ -257,6 +261,7 @@ const cart = (mugs) => {
     }
   };
 
+  // Set cart items into Dom from localStorage
   const setCartItems = () => {
     if (localStorage.length > 1) {
       enableCart();
@@ -269,11 +274,11 @@ const cart = (mugs) => {
           const regexDigit = /\d/g;
           if (propertie.match(regexDigit)) cartItems.innerHTML += localStorage[propertie];
         }
-        // salvar stock no localStorage
       });
     }
   };
 
+  // Events to start cart
   if (addItemToCartButton.length) addEventCartButton();
   addCepApiEvent();
   setCartItems();
