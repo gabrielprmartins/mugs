@@ -5,6 +5,7 @@ let index = 0;
 
 const nextSlideItem = () => {
   slideList[index].classList.add(dismissClass);
+  // Laze transition image effect  
   setTimeout(() => {
     slideList[index].classList.remove(dismissClass);
     slideList[index].classList.remove(activeClass);
