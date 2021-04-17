@@ -2,8 +2,8 @@
   {
     "id": 0,
     "name": "Caneca azul de porcelana",
-    "description": "Uma mug azul tende a ser associada à elegância e força, e é ligada a pessoas ambiciosas e decididas, de personalidade forte.",
-    "price": 19.90,
+    "description": "Uma mug azul é frequentemente associada com a profundidade e estabilidade. Ela simboliza, nas pessoas, a confiança, lealdade, sabedoria, confiança, inteligência, fé e verdade.",
+    "price": 10.90,
     "stock": 43,
     "thumb": "./api/mugs-img/thumb/thumb-blue-mug.png",
     "img": "./api/mugs-img/blue-mug.png"
@@ -11,8 +11,8 @@
   {
     "id": 1,
     "name": "Caneca laranja de porcelana",
-    "description": "Uma mug laranja tende a ser associada à elegância e força, e é ligada a pessoas ambiciosas e decididas, de personalidade forte.",
-    "price": 22.50,
+    "description": "Uma mug laranja é vibrante, cheia de energia, retrata ânimo e estimula a criatividade. Às pessoas, reflete calor, excitação, entusiasmo e mudança.",
+    "price": 12.50,
     "stock": 28,
     "thumb": "./api/mugs-img/thumb/thumb-orange-mug.png",
     "img": "./api/mugs-img/orange-mug.png"
@@ -21,7 +21,7 @@
     "id": 2,
     "name": "Caneca preta de porcelana",
     "description": "Uma mug preta tende a ser associada à elegância e força, e é ligada a pessoas ambiciosas e decididas, de personalidade forte.",
-    "price": 38.00,
+    "price": 19.90,
     "stock": 13,
     "thumb": "./api/mugs-img/thumb/thumb-black-mug.png",
     "img": "./api/mugs-img/black-mug.png"
@@ -29,8 +29,8 @@
   {
     "id": 3,
     "name": "Caneca marrom de madeira",
-    "description": "Uma mug madeira tende a ser associada à elegância e força, e é ligada a pessoas ambiciosas e decididas, de personalidade forte.",
-    "price": 32.99,
+    "description": "Uma mug madeira marrom está associado à natureza, ao conforto e a simplicidade. Também é a cor que nos liga ao que vem da terra, trazendo estabilidade e confiança.",
+    "price": 22.99,
     "stock": 15,
     "thumb": "./api/mugs-img/thumb/thumb-brown-mug.png",
     "img": "./api/mugs-img/brown-mug.png"
