@@ -91,6 +91,10 @@ body {
   width: 100%;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .btn-menu {
   display: none;
 }

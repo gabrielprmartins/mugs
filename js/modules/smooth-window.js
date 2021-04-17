@@ -1,5 +1,6 @@
 const linksMenu = document.querySelectorAll('.menu a[href^="#"]');
 const linkMug = document.querySelector('[data-link]');
+const topLink = document.querySelector('.logo');
 
 const getMenuHeigth = () => {
   const menu = document.querySelector('.header');
@@ -28,6 +29,7 @@ const scrollTo = (event) => {
 const addSmoothScrollEvent = () => {
   linksMenu.forEach((link) => link.addEventListener('click', scrollTo));
   linkMug.addEventListener('click', scrollTo);
+  topLink.addEventListener('click', () => smoothScrollTo(0, 0));
 };
 
 /*
@@ -60,6 +62,6 @@ function smoothScrollTo(endX, endY, duration) {
     }
     window.scroll(newX, newY);
   }, 1000 / 60); // 60 fps
-};
+}
 
 export { addSmoothScrollEvent };
