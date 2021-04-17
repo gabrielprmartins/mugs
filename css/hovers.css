@@ -1,0 +1,19 @@
+.button-header:hover {
+  background: #DDFFB2;
+}
+
+.button-intro:hover {
+  background: #F7DA6F;
+}
+
+.sell-button:hover, .remove-item:hover {
+  background: #F26D6D;
+}
+
+.mug-control li:hover {
+  background: #71D9C6;
+}
+
+.mug-control li.active:hover {
+  background: #F7DA6F;
+}
